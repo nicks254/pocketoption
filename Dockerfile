@@ -1,6 +1,6 @@
-FROM python:3.11-slim
+FROM python:3.11
 
-# Install system dependencies for Chromium + Playwright
+# Install system dependencies
 RUN apt-get update && apt-get install -y \
     wget \
     curl \
@@ -24,6 +24,7 @@ RUN apt-get update && apt-get install -y \
     xdg-utils \
     && rm -rf /var/lib/apt/lists/*
 
+# Install Playwright and Chromium
 RUN pip install --no-cache-dir playwright
 RUN playwright install chromium --with-deps
 
